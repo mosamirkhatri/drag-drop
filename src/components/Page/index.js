@@ -3,6 +3,7 @@ import React, { useState, useRef, Fragment, useEffect } from "react";
 import {
   cloneDeep,
   findIndex,
+  includes,
   omit,
   remove,
   toInteger,
@@ -150,12 +151,12 @@ const Page = ({ className, ...props }) => {
     if (newElement.id) {
       id = newElement.id;
     } else {
-      id = uniqueId(); //"2";
-      let index = findIndex(elementList, (element) => element.id === id);
-      console.log(index);
-      while (index >= 0) {
+      const arrayOfIndex = elementList.map((ele) => ele.id);
+      id = uniqueId(); // "2";
+      let exists = includes(arrayOfIndex, id);
+      while (exists) {
         id = uniqueId();
-        index = findIndex(elementList, (element) => element.id === id);
+        exists = includes(arrayOfIndex, id);
       }
     }
     const clone = cloneDeep(elementList);
