@@ -1,5 +1,5 @@
 // Library
-import React, { useState, useRef, Fragment } from "react";
+import React, { useState, useRef, Fragment, useEffect } from "react";
 import {
   cloneDeep,
   findIndex,
@@ -21,7 +21,10 @@ import Input from "components/Input";
 import Modal from "components/Modal";
 
 const Page = ({ className, ...props }) => {
-  const [elementList, setElementList] = useState([
+  const listFromLocal = localStorage.getItem("elementList");
+  const [elementList, setElementList] = useState(
+    listFromLocal ? JSON.parse(listFromLocal) : []
+    // [
     // { id: 1, type: "label", x: 20, y: 50, text: "Hello!" },
     // { id: 2, type: "label", x: 50, y: 70, text: "Hi!" },
     // { id: 3, type: "label", x: 30, y: 100, text: "Name!" },
@@ -32,7 +35,10 @@ const Page = ({ className, ...props }) => {
     // { id: 9, type: "input", x: 80, y: 300 },
     // { id: 10, type: "input", x: 100, y: 400 },
     // { id: 11, type: "input", x: 500, y: 500 },
-  ]);
+    // ]
+  );
+
+  console.log("something", localStorage.getItem("something"));
 
   const [activeElement, setActiveElement] = useState(null);
 
@@ -144,8 +150,9 @@ const Page = ({ className, ...props }) => {
     if (newElement.id) {
       id = newElement.id;
     } else {
-      id = uniqueId();
+      id = uniqueId(); //"2";
       let index = findIndex(elementList, (element) => element.id === id);
+      console.log(index);
       while (index >= 0) {
         id = uniqueId();
         index = findIndex(elementList, (element) => element.id === id);
@@ -157,7 +164,7 @@ const Page = ({ className, ...props }) => {
       clone[index] = newElement;
       setElementList(clone);
     } else {
-      setElementList((prev) => [...prev, { id: uniqueId(), ...newElement }]);
+      setElementList((prev) => [...prev, { id: id, ...newElement }]);
     }
     closeModal();
   };
@@ -167,6 +174,10 @@ const Page = ({ className, ...props }) => {
   useKeyPress(13, onOpenModalForUpdate);
   // enter -> 13, delete -> 46
   useKeyPress(46, onDelete);
+
+  useEffect(() => {
+    localStorage.setItem("elementList", JSON.stringify(elementList));
+  }, [elementList]);
 
   return (
     <>
