@@ -1,0 +1,52 @@
+.modal-wrapper {
+  width: 42.5rem;
+  background-color: var(--c-white);
+  border-radius: 0.5rem;
+  font-size: 1.4rem;
+  &__header {
+    padding: 1.8rem 2.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+    p {
+      font-size: 2.1rem;
+    }
+    svg {
+      cursor: pointer;
+    }
+  }
+  &__body {
+    padding: 2.5rem 2.1rem;
+    label {
+      display: block;
+    }
+    input {
+      padding: 0.8rem 1.2rem;
+      outline: none;
+      display: block;
+      width: 100%;
+      border: 0.1rem solid var(--c-gray-1);
+      border-radius: 0.2rem;
+      margin: 0.3rem auto 3.3rem;
+      &[type="number"]::-webkit-inner-spin-button,
+      &[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      &[type="number"] {
+        -moz-appearance: textfield;
+      }
+    }
+  }
+  &__save-button {
+    padding: 0.8rem 1.6rem;
+    background-color: var(--c-blue-1);
+    color: var(--c-white);
+    font-size: 1.6rem;
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+  }
+}

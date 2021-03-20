@@ -1,0 +1,18 @@
+.button {
+  position: absolute;
+  padding: 1.3rem;
+  background-color: var(--c-blue-1);
+  color: var(--c-white);
+  font-size: 1.6rem;
+  outline: none;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  user-select: none;
+  border: 0.1rem solid transparent; // to avoid push down type effect
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}

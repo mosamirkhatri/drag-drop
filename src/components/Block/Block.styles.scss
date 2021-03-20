@@ -1,0 +1,20 @@
+.block {
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 0.5rem rgb(255, 202, 159);
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  user-select: none;
+  &__ellipsis {
+    margin-right: 1rem;
+  }
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}

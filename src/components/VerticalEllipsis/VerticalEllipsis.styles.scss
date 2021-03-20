@@ -1,0 +1,16 @@
+.vertical-ellipsis {
+  width: 1.2rem;
+  height: 1.7rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  .individual-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 0.12rem;
+    background-color: var(--c-bg);
+    &:nth-child(odd) {
+      margin-right: 0.2rem;
+    }
+  }
+}

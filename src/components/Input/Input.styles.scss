@@ -1,0 +1,16 @@
+.input {
+  position: absolute;
+  border: 0.1rem solid rgba($color: var(--c-black-1), $alpha: 0.07);
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  outline: none;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  user-select: none;
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+}
