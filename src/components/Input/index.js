@@ -1,14 +1,16 @@
 // Library
 import React, { forwardRef } from "react";
-import { toInteger } from "lodash";
+// HOC
+import elementize from "utils/HOC/Elementize";
+// import { toInteger } from "lodash";
 // Styles
 import "./Input.styles.scss";
 
-const Input = forwardRef(({ children, className, x, y, ...props }, ref) => {
+const Input = forwardRef(({ children, className, ...props }, ref) => {
   return (
     <input
       ref={ref}
-      style={{ top: toInteger(y), left: toInteger(x) }}
+      // style={{ top: toInteger(y), left: toInteger(x) }}
       className={"input " + (className ? className : "")}
       draggable
       {...props}
@@ -16,4 +18,4 @@ const Input = forwardRef(({ children, className, x, y, ...props }, ref) => {
   );
 });
 
-export default Input;
+export default elementize(Input);

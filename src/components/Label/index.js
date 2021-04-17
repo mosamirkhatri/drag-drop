@@ -1,17 +1,18 @@
 // Library
 import React, { forwardRef } from "react";
 import { toInteger } from "lodash";
+// HOC
+import elementize from "utils/HOC/Elementize";
 // Styles
 import "./Label.styles.scss";
 
 const Label = forwardRef(
-  ({ children, className, x, y, fontSize, fontWeight, ...props }, ref) => {
+  ({ children, className, style, fontSize, fontWeight, ...props }, ref) => {
     return (
       <label
         ref={ref}
         style={{
-          top: toInteger(y),
-          left: toInteger(x),
+          ...style,
           fontSize: toInteger(fontSize),
           fontWeight: toInteger(fontWeight),
         }}
@@ -25,4 +26,4 @@ const Label = forwardRef(
   }
 );
 
-export default Label;
+export default elementize(Label);

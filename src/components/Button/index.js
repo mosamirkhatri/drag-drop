@@ -1,14 +1,14 @@
 // Library
 import React, { forwardRef } from "react";
-import { toInteger } from "lodash";
+// HOC
+import elementize from "utils/HOC/Elementize";
 // Styles
 import "./Button.styles.scss";
 
-const Button = forwardRef(({ children, className, x, y, ...props }, ref) => {
+const Button = forwardRef(({ children, className, ...props }, ref) => {
   return (
     <label
       ref={ref}
-      style={{ top: toInteger(y), left: toInteger(x) }}
       className={"button " + (className ? className : "")}
       draggable
       {...props}
@@ -18,4 +18,4 @@ const Button = forwardRef(({ children, className, x, y, ...props }, ref) => {
   );
 });
 
-export default Button;
+export default elementize(Button);
